@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 const appconfig = require('./config/appconfig');
 
-
 // establish database connection
 mongoose.connect(config.database, {
     useNewUrlParser: true,
