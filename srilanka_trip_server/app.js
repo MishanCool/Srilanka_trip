@@ -1,11 +1,12 @@
- const express = require('express');
- const path = require('path');
-// const bodyParser = require('body-parser');
-// const cors = require('cors');
-// const passport = require('passport');
+const express = require('express');
+const path = require('path');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const passport = require('passport');
 const mongoose = require('mongoose');
 const config = require('./config/database');
 const appconfig = require('./config/appconfig');
+
 
 // establish database connection
 mongoose.connect(config.database, {
@@ -24,7 +25,7 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 const port = appconfig.port;
 
-// middleware
+// // middleware
 // app.use(cors());
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -34,6 +35,7 @@ const port = appconfig.port;
 
 
 
+// start server
 app.listen(port, () => {
     console.log('Server started on port: ' + port);
 });
