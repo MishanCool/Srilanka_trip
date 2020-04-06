@@ -1,0 +1,11 @@
+{
+  "name": "srilanka_trip_server",
+  "version": "1.0.0",
+  "description": "Srilanka trip",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mishan Madhupa",
+  "license": "ISC"
+}
