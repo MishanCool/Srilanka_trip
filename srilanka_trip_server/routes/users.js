@@ -35,4 +35,36 @@ router.post('/register' , (req , res) => {
 });
 
 
+router.post('/login', (req,res) => {
+    const {error, isValid} = validator.loginValidator(req.body);
+    if(!isValid) {
+        res.status(404).json(error);
+    }
+    User.findOne({ email: req.body.email }, (err,doc) => {
+        if(!doc) {
+            res.status(404).json({'email':'Email ID is does not exisst'});
+        } else {
+        bcrypt.compare(req.body.password, doc.password).then((isMatch) =>{
+            if(!isMatch) {
+                res.status(400).json({ 'password': 'Password do not match......!'});
+            }else {
+                const payload = {
+                    id: doc.id,
+                    username: doc.username,
+                }
+                jwt.sign(payload, config.secret, {expiresIn: 2155926}, (err,token) => {
+                    res.json({
+                          success: true,
+                          token: 'Bearer token' + token
+                    });
+                });
+            }
+        });
+
+        }
+
+    });
+});
+
+
 module.exports = router;

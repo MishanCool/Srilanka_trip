@@ -36,20 +36,20 @@ module.exports.registerValidator = registerValidator = function validateRegister
     doc.password = !(isEmpty(doc.password))?doc.password:'';
 
     if(validator.isEmpty(doc.username)) {
-        error.username = 'User name is required ......!'
+        error.username = 'User name is required ......!';
     }
 
     if(validator.isEmpty(doc.email)) {
-        error.email = 'Email is required ......!'
+        error.email = 'Email is required ......!';
     }
 
     if(validator.isEmpty(doc.password)) {
-        error.password = 'Password is required ......!'
+        error.password = 'Password is required ......!';
     }
 
 
     if(!validator.isEmail(doc.email)) {
-        error.email = 'Invalied email id ......!'
+        error.email = 'Invalied email id ......!';
     }
 
     return {
