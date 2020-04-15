@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { from } from 'rxjs';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
