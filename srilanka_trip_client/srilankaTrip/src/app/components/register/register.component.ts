@@ -9,11 +9,23 @@ import { UserService } from '../../services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
+  username: string;
+  email: string;
+  password: string;
+
   constructor(
     private userService: UserService,
   ) { }
 
   ngOnInit() {
+  }
+
+  onRegisterSubmit() {
+    const user = {
+      username: this.username,
+      email: this.email,
+      password: this.password
+    };
   }
 
 }
