@@ -13,7 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 
 
 // Services
-import { UserService } from './services/user.service';
+
 
 
 
@@ -34,7 +34,7 @@ import { UserService } from './services/user.service';
 
   ],
   providers: [
-    UserService,
+
   ],
   bootstrap: [AppComponent]
 })

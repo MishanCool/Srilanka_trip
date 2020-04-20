@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  providers: [UserService]
+  // providers: []
 })
 export class RegisterComponent implements OnInit {
 
@@ -14,7 +13,7 @@ export class RegisterComponent implements OnInit {
   password: string;
 
   constructor(
-    private userService: UserService,
+    // private userService: UserService,
   ) { }
 
   ngOnInit() {
