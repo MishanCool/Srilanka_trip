@@ -13,7 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 
 
 // Services
-
+import { AuthenticationService } from './services/authentication.service';
 
 
 
@@ -34,7 +34,7 @@ import { LoginComponent } from './components/login/login.component';
 
   ],
   providers: [
-
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
