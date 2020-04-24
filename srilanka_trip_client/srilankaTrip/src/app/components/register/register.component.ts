@@ -45,15 +45,15 @@ export class RegisterComponent implements OnInit {
       // phone: this.phone.value,
       // city: this.city.value
     }).subscribe((res) => {
-      if (res['success']) {
+      if (res.success) {
         this.alert = {
           type: 'success',
-          msg: res['msg']
+          msg: res.msg
         };
       } else {
         this.alert = {
           type: 'danger',
-          msg: res['msg']
+          msg: res.msg
         };
       }
     });

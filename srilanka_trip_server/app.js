@@ -30,6 +30,9 @@ const app = express();
 // middleware
 app.use(cors());
 app.use(bodyParser.json());
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport')(passport);
 
 // serve resources from public folder
 app.use("/public", express.static(path.join(__dirname, 'public')));
