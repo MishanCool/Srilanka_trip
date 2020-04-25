@@ -23,6 +23,6 @@ export class AuthenticationService {
   registerUser(user: User) {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
-    return this.http.post(AppConfig.BASE_URL + 'users/register', user, { headers }).pipe();
+    return this.http.post(AppConfig.BASE_URL + 'users/register', user, { headers: headers }).pipe();
   }
 }

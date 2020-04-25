@@ -30,6 +30,7 @@ router.get('/authenticate', (req, res, next) => {
     // res.send('Authenticate');
     const username  = req.body.username;
     const password = req.body.password;
+    console.log('1hiiii');
 
     User.getUserByUsername(username, (err, user) => {
         if(err) throw err;
@@ -37,14 +38,16 @@ router.get('/authenticate', (req, res, next) => {
         if(!user) {
             return res.json({success: false, msg: 'User not found'});
         }
+        console.log('2hiiii');
 
         User.comparePassword(password, user.password, (err, isMatch) => {
             if(err) throw err;
 
             if(isMatch) {
-                const token = jwt.sign(user, config.secret, {
+                const token = jwt.sign({data: user}, config.secret, {
                     expiresIn: 604800 // 1 week
                 });
+                console.log('3hiiii');
 
                 res.json({
                     success: true,
@@ -64,8 +67,11 @@ router.get('/authenticate', (req, res, next) => {
 });
 
 //Profile
-router.get('/profile', (req, res, next) => {
-    res.send('Profile');
+router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+    // res.send('Profile');
+    console.log('4hiiii');
+    res.json({user: req.user});
+    console.log('4hiiii');
 });
 
 //Validate
