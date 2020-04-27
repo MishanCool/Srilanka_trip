@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminDashboardComponent implements OnInit {
 
+  isLoggedIn: false;
+
   constructor() { }
 
   ngOnInit() {

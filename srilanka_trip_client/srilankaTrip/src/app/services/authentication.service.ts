@@ -39,4 +39,10 @@ export class AuthenticationService {
     this.user = user;
   }
 
+  logOut() {
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
+  }
+
 }
