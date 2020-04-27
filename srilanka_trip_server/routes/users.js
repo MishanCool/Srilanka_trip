@@ -26,7 +26,7 @@ router.post('/register', (req, res, next) => {
 });
 
 //Authenticate
-router.get('/authenticate', (req, res, next) => {
+router.post('/authenticate', (req, res, next) => {
     // res.send('Authenticate');
     const username  = req.body.username;
     const password = req.body.password;

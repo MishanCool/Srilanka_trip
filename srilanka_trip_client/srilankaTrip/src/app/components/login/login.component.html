@@ -8,21 +8,22 @@
 					<span><i class="fa fa-google-plus-square"></i></span>
 					<span><i class="fa fa-twitter-square"></i></span>
 				</div>
-			</div>
+      </div>
+      <ng-flash-message></ng-flash-message>
 			<div class="card-body">
-				<form>
+				<form (submit)="onLoginSubmit()">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-user"></i></span>
 						</div>
-						<input type="text" class="form-control" placeholder="username">
+						<input name="username" [(ngModel)]="username" type="text" class="form-control" placeholder="username">
 
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fa fa-key"></i></span>
 						</div>
-						<input type="password" class="form-control" placeholder="password">
+						<input name="password" [(ngModel)]="password" type="password" class="form-control" placeholder="password">
 					</div>
 					<div class="row align-items-center remember">
 						<input type="checkbox">Remember Me
