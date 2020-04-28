@@ -45,4 +45,17 @@ export class AuthenticationService {
     localStorage.clear();
   }
 
+  getProfile() {
+    const headers = new HttpHeaders();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(AppConfig.BASE_URL + 'users/profile', { headers: headers}).pipe();
+  }
+
+  loadToken() {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
+  }
+
 }

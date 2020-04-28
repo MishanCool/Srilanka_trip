@@ -19,6 +19,7 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 // Services
 import { AuthenticationService } from './services/authentication.service';
 import { ValidateService } from './services/validate.service';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 
@@ -30,7 +31,8 @@ import { ValidateService } from './services/validate.service';
     NavigationComponent,
     HomeComponent,
     LoginComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
