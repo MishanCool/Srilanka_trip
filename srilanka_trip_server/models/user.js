@@ -10,8 +10,10 @@ const UserSchema = mongoose.Schema({
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
+module.exports.User = mongoose.model('User', UserSchema);
 
 module.exports.getUserById = function (id, callback) {
+    console.log('getUserById');
     User.findById(id, callback);
 }
 

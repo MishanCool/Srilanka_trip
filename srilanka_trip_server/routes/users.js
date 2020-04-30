@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const ObjectId = require('mongoose').Types.ObjectId;
 
 const User = require('../models/user');
 const config = require('../config/database');
@@ -37,6 +38,7 @@ router.post('/authenticate', (req, res, next) => {
 
         if(!user) {
             return res.json({success: false, msg: 'User not found'});
+            console.log('!user');
         }
         console.log('2hiiii');
 
@@ -51,7 +53,7 @@ router.post('/authenticate', (req, res, next) => {
 
                 res.json({
                     success: true,
-                    token: 'JWT'+token,
+                    token: 'JWT' + token,
                     user: {
                         id: user._id,
                         username: user.username,
@@ -60,6 +62,7 @@ router.post('/authenticate', (req, res, next) => {
                 });
             } else {
                 return res.json({success: false, msg: 'Wrong password'});
+                console.log('Wrong password');
             }
 
         });
@@ -67,12 +70,41 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 //Profile
-router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {
+    console.log('profile');
     // res.send('Profile');
     console.log('4hiiii');
     res.json({user: req.user});
     console.log('4hiiii');
 });
+
+router.get('/profile/:id', (req, res) => {
+    // locate user with given id
+    if (!ObjectId.isValid(req.params.id))
+        return res.json({ success: false });
+
+    User.getUserById(req.params.id, (err, user) => {
+        if (err) { throw err; }
+        else {
+            if (user) {
+                return res.json({
+                    success: true,
+                    user: {
+                        _id: user._id,
+                        // name: user.name,
+                        username: user.username,
+                        email: user.email,
+                        // role: user.role
+                    }
+                })
+            }
+            else {
+                return res.json({ success: false });
+            }
+        }
+    });
+});
+
 
 //Validate
 router.get('/validate', (req, res, next) => {
